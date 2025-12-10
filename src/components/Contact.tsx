@@ -250,7 +250,7 @@ export function Contact() {
                 {[
                   { icon: Mail, label: 'Email', value: 'houseofcodexindia@gmail.com', href: 'mailto:houseofcodexindia@gmail.com', gradient: 'from-blue-500 to-cyan-500' },
                   { icon: Phone, label: 'Phone', value: '+91 79093 08210', href: 'tel:+917909308210', gradient: 'from-green-500 to-emerald-500' },
-                  { icon: MapPin, label: 'Location', value: 'Ganj Basoda, India', href: null, gradient: 'from-purple-500 to-pink-500' },
+                  { icon: MapPin, label: 'Location', value: 'Bhopal, Madhya Pradesh, India', href: null, gradient: 'from-purple-500 to-pink-500' },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
