@@ -134,7 +134,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-gray-400 text-sm sm:text-base">
                 <MapPin size={18} className="flex-shrink-0 mt-0.5 sm:w-5 sm:h-5" />
-                <span>Ganj Basoda, India</span>
+                <span>Bhopal, Madhya Pradesh, India</span>
               </li>
             </ul>
           </div>
