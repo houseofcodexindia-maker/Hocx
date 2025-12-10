@@ -122,19 +122,19 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               <li className="flex items-start gap-2 sm:gap-3 text-gray-400 text-sm sm:text-base">
                 <Mail size={18} className="flex-shrink-0 mt-0.5 sm:w-5 sm:h-5" />
-                <a href="mailto:info@hocx.com" className="hover:text-white transition-colors break-all">
-                  info@hocx.com
+                <a href="mailto:houseofcodexindia@gmail.com" className="hover:text-white transition-colors break-all">
+                  houseofcodexindia@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-gray-400 text-sm sm:text-base">
                 <Phone size={18} className="flex-shrink-0 mt-0.5 sm:w-5 sm:h-5" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:7909308210" className="hover:text-white transition-colors">
+                  +91 79093 08210
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-gray-400 text-sm sm:text-base">
                 <MapPin size={18} className="flex-shrink-0 mt-0.5 sm:w-5 sm:h-5" />
-                <span>India, Serving Worldwide</span>
+                <span>Ganj Basoda, India</span>
               </li>
             </ul>
           </div>

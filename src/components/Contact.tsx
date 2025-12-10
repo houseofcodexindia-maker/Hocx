@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { supabase } from '../lib/supabase';
+import { toast } from 'sonner';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -17,11 +19,25 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            business_type: formData.businessType,
+            project_details: formData.projectDetails,
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (error) throw error;
+
       setSubmitStatus('success');
+      toast.success('Message sent successfully!');
       setFormData({
         name: '',
         email: '',
@@ -29,15 +45,21 @@ export function Contact() {
         businessType: '',
         projectDetails: '',
       });
-      
+
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsApp = () => {
-    const phoneNumber = '919876543210'; // Replace with actual number
+    const phoneNumber = '917909308210'; // Replace with actual number
     const message = encodeURIComponent('Hi, I would like to discuss a project with HOCX.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
@@ -84,7 +106,7 @@ export function Contact() {
               <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Send Us a Message
               </h3>
-              
+
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0 }}
@@ -108,6 +130,7 @@ export function Contact() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="John Doe"
+                    name="name"
                   />
                 </motion.div>
 
@@ -123,7 +146,7 @@ export function Contact() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
-                      placeholder="john@example.com"
+                      placeholder="houseofcodexindia@gmail.com"
                     />
                   </motion.div>
 
@@ -138,7 +161,7 @@ export function Contact() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 79093 08210"
                     />
                   </motion.div>
                 </div>
@@ -225,9 +248,9 @@ export function Contact() {
               </h3>
               <div className="space-y-4 sm:space-y-5">
                 {[
-                  { icon: Mail, label: 'Email', value: 'info@hocx.com', href: 'mailto:info@hocx.com', gradient: 'from-blue-500 to-cyan-500' },
-                  { icon: Phone, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210', gradient: 'from-green-500 to-emerald-500' },
-                  { icon: MapPin, label: 'Location', value: 'India\nServing clients worldwide', href: null, gradient: 'from-purple-500 to-pink-500' },
+                  { icon: Mail, label: 'Email', value: 'houseofcodexindia@gmail.com', href: 'mailto:houseofcodexindia@gmail.com', gradient: 'from-blue-500 to-cyan-500' },
+                  { icon: Phone, label: 'Phone', value: '+91 79093 08210', href: 'tel:+917909308210', gradient: 'from-green-500 to-emerald-500' },
+                  { icon: MapPin, label: 'Location', value: 'Ganj Basoda, India', href: null, gradient: 'from-purple-500 to-pink-500' },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
