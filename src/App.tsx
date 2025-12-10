@@ -7,6 +7,7 @@ import { About } from './components/About';
 import { Pricing } from './components/Pricing';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { Toaster } from 'sonner';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <Toaster position="top-center" />
     </div>
   );
 }
