@@ -38,3 +38,20 @@ Once deployed, Vercel will give you a live URL.
 
 ---
 **Note:** A `.env` file is included in your project for local testing. Open `.env` and paste your credentials there to test the contact form on your machine before deploying.
+
+## Step 5: Connect Custom Domain (HOCX.in)
+1. Go to your **Vercel Dashboard** and select your project.
+2. Click on **Settings** -> **Domains**.
+3. In the input box, enter `hocx.in` and click **Add**.
+4. Select the recommended option (usually "Add A Record" or "Nameservers").
+5. **If Vercel asks you to add an A Record:**
+   - Go to your domain provider's website (e.g., GoDaddy, Hostinger).
+   - Find "DNS Management" or "DNS Settings" for `hocx.in`.
+   - Add an **A Record**:
+     - **Name/Host**: `@`
+     - **Value/Points to**: `76.76.21.21` (This is Vercel's IP)
+     - **TTL**: Default / Automatic
+   - Add a Record for **CNAME**:
+     - **Name/Host**: `www`
+     - **Value/Points to**: `cname.vercel-dns.com`
+6. Wait for a few minutes (up to 24-48 hours, but usually faster) for the changes to propagate. Vercel will show a green checkmark when connected.
